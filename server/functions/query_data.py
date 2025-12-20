@@ -1,4 +1,4 @@
- import argparse
+import argparse
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import OllamaEmbeddings
@@ -55,5 +55,5 @@ def generateAns(text):
 
    
 if __name__ == "__main__":
-    generateAns(t)
+    generateAns()
 

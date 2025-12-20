@@ -11,11 +11,11 @@ function Dashboard() {
 
     async function uploadFile(fileInput){
         if(!fileInput) {
-            console.log("No file selected");
+            alert("No file selected");
             return;
         }
         if(fileInput.type !== "application/pdf"){
-            console.log("Please upload a PDF file");
+            alert("Please upload a PDF file");
             return;
         }
 
@@ -38,7 +38,7 @@ function Dashboard() {
           }
     }
 
-    async function getAnswer(query){
+     async function getAnswer(query){
     
         try {
           const response = await fetch("http://127.0.0.1:5000/answerquerry", {
@@ -50,7 +50,7 @@ function Dashboard() {
             const data = await response.json(); 
             console.log("Result:", data);
             setMessages(prevItems => [...prevItems, data.answer])
-            setUser(prevItems => [...prevItems, "AI"])
+            setUser(prevItem => [...prevItem, "AI"])
             return data;
         }catch(e) {
             console.error("Backend error:", e.message);

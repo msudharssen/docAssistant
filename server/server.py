@@ -6,7 +6,7 @@ from server.functions.create_db import main
 from server.functions.query_data import generateAns
 
 app = Flask(__name__)
-CORS(app, origins="http://localhost:3000", allow_headers=["Content-Type"], methods=["GET", "POST"])
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 UPLOAD_DIR = "info/data"
 paths = os.path.join(os.path.dirname(__file__), '../info/data')

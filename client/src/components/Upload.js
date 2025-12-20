@@ -19,7 +19,7 @@ function Upload({helper3}) {
     
 
   return (
-    <div className="fixed left-0 top-0 w-1/4 h-full bg-gray-900 text-white flex flex-col justify-center">
+    <div  data-testid="upload-component"className="fixed left-0 top-0 w-1/4 h-full bg-gray-900 text-white flex flex-col justify-center">
         <div className='gap-1 justify-evenly flex'>
       <form onSubmit={handleSubmit} className="m-4 flex flex-col gap-4">
         <label className="mb-2 self-center">Upload File:</label>
