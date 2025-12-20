@@ -5,6 +5,6 @@ COPY package-lock.json /appClient/
 RUN npm install
 COPY . /appClient/
 EXPOSE 3000
-CMD ["npm run dev"]
+CMD ["npm", "run", "dev"]
 
 
