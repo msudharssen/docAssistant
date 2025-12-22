@@ -1,7 +1,7 @@
 export async function getAnswer(query){
     
     try {
-      const response = await fetch("http://server:5000/answerquerry", {
+      const response = await fetch("http://server:5001/answerquerry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ "search": query }),
