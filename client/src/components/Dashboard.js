@@ -22,7 +22,7 @@ function Dashboard() {
         const  formData = new FormData();
         formData.append("file", fileInput);
         try {
-            const response = await fetch("http://127.0.0.1:5000/uploadfile", {
+            const response = await fetch("http://server:5000/uploadfile", {
               method: "POST",
               body: formData,
             });
@@ -41,7 +41,7 @@ function Dashboard() {
      async function getAnswer(query){
     
         try {
-          const response = await fetch("http://127.0.0.1:5000/answerquerry", {
+          const response = await fetch("http://server:5000/answerquerry", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ "search": query }),
