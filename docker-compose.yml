@@ -13,11 +13,29 @@ services:
     build: ./server
     ports: 
     - "5001:5000"
+    volumes:
+      - ./server/info:/server/info
     networks:
       - my_network
+    environment:
+    - FLASK_DEBUG=1
+  ai:
+    container_name: ollamaAi
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    networks:
+      - my_network
+    volumes:
+      - ollama_data:/root/.ollama
+
 
 networks:
   my_network:
     driver: bridge
+
+volumes:
+  ollama_data:
+
 
 
