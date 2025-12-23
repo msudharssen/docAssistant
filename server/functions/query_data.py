@@ -47,7 +47,7 @@ def generateAns(text):
     prompt = prompt_template.format(context=context_text, question=text)
     print(prompt)
 
-    model = OllamaLLM(model="llama3.1", base_url=urlPathxw)
+    model = OllamaLLM(model="llama3.1", base_url=urlPath)
     response_text = model.invoke(prompt)
 
     # create the response
