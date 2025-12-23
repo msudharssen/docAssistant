@@ -3,7 +3,7 @@ import Chatbox from './Chatbox'
 import Search from './Search'
 import Upload from './Upload'
 import { useState } from 'react'
-const NEXT_PUBLIC_API_URL=process.env.NEXT_PUBLIC_API_URL;
+const REACT_APP_API_URL=process.env.REACT_APP_API_URL;
 
 function Dashboard() {
     const[messages, setMessages] = useState([])
@@ -19,10 +19,11 @@ function Dashboard() {
             return;
         }
 
+
         const  formData = new FormData();
         formData.append("file", fileInput);
         try {
-            const response = await fetch(`${NEXT_PUBLIC_API_URL}/uploadfile`, {
+            const response = await fetch(`${REACT_APP_API_URL}/uploadfile`, {
               method: "POST",
               body: formData,
             });
@@ -41,7 +42,7 @@ function Dashboard() {
      async function getAnswer(query){
     
         try {
-          const response = await fetch(`${NEXT_PUBLIC_API_URL}/answerquerry`, {
+          const response = await fetch(`${REACT_APP_API_URL}/answerquerry`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ "search": query }),

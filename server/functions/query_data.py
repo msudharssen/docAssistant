@@ -4,7 +4,10 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import OllamaEmbeddings
 from langchain_ollama import OllamaLLM
 import os
+from dotenv import load_dotenv
 
+
+load_dotenv()
 urlPath = os.environ.get('OLLAMA_HOST')
 
 

@@ -5,7 +5,9 @@ from langchain_community.vectorstores import Chroma
 import os
 import shutil
 from langchain_experimental.text_splitter import SemanticChunker
+from dotenv import load_dotenv
 
+load_dotenv()
 
 
 #declare paths to store chroma database and the documents, and original file

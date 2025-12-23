@@ -1,15 +1,16 @@
 services:
   client:
     container_name: frontend
-    build: ./client
+    build:
+      context: ./client
+      args:
+        - REACT_APP_API_URL=${REACT_APP_API_URL}
     ports: 
       - "8080:3000"
     depends_on:
       - server
     networks:
       - my_network
-    environment:
-      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
   server:
     container_name: backend
     build: ./server
@@ -21,6 +22,7 @@ services:
       - my_network
     environment:
     - FLASK_DEBUG=1
+    - OLLAMA_HOST=${OLLAMA_HOST}
   ai:
     container_name: ollamaAi
     image: ollama/ollama
@@ -30,8 +32,7 @@ services:
       - my_network
     volumes:
       - ollama_data:/root/.ollama
-    environment:
-      - OLLAMA_HOST=${OLLAMA_HOST}
+    
 
 networks:
   my_network:
