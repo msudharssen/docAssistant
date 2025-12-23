@@ -40,8 +40,5 @@ networks:
 volumes:
   ollama_data:
 
-environments:
-
-
 
 
