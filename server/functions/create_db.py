@@ -34,9 +34,9 @@ def loadDoc(p):
 
 #generate the data store using semantic chunks
 def split(documents: list[Document]):
-    text_splitter = SemanticChunker(OllamaEmbeddings(model='llama3.1'), breakpoint_threshold_type='percentile')    
+    text_splitter = SemanticChunker(OllamaEmbeddings(model='llama3.1', base_url='http://ai:11434'), breakpoint_threshold_type='percentile')    
     doc_chunks = text_splitter.split_documents(documents)
-    print(type(doc_chunks))
+    print(f"Split into {len(doc_chunks)} semantic chunks")
     return doc_chunks
 
 #create vector embeddings for each chunk
@@ -44,11 +44,12 @@ def chromaSave(chunks: list[Document]):
     if os.path.exists(CHROMA_PATH):
         shutil.rmtree(CHROMA_PATH)
     if not chunks:
-        raise ValueError("No documents provided to Chroma.from_documents()")
+        print("No documents found to process. Skipping database creation.")
+        return
     
     db = Chroma.from_documents(
         documents=chunks, 
-        embedding=OllamaEmbeddings(model="llama3.1"),
+        embedding=OllamaEmbeddings(model="llama3.1", base_url="http://ai:11434"),
         persist_directory=CHROMA_PATH
     )
     db.persist()

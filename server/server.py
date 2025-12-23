@@ -2,13 +2,13 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
-from server.functions.create_db import main
-from server.functions.query_data import generateAns
+from functions.create_db import main
+from functions.query_data import generateAns
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
-UPLOAD_DIR = "info/data"
+UPLOAD_DIR = "/server/info/data"
 paths = os.path.join(os.path.dirname(__file__), '../info/data')
 
 os.makedirs(UPLOAD_DIR, exist_ok=True)  
@@ -34,6 +34,8 @@ def upload_file():
         return jsonify({"Result": "Succesfully Uploaded"}), 200
 
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({"error": f"File upload failed: {e}"}), 500
 
 
