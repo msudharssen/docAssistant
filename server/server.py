@@ -8,7 +8,7 @@ from functions.query_data import generateAns
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
-UPLOAD_DIR = "/server/info/data"
+UPLOAD_DIR = os.path.join(os.path.dirname(__file__), 'info/data')
 paths = os.path.join(os.path.dirname(__file__), '../info/data')
 
 os.makedirs(UPLOAD_DIR, exist_ok=True)  
