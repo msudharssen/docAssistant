@@ -17,7 +17,6 @@ urlPath = os.environ.get('OLLAMA_HOST')
 
 def main():
     makeDataStore(paths)
-xw
 
 def makeDataStore(p):
     documents = loadDoc(p)
