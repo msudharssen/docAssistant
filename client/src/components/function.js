@@ -18,6 +18,3 @@ export async function getAnswer(query){
     }
 }
 
-export function add(a, b) {
-    return a + b;
-}
