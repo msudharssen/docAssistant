@@ -49,7 +49,7 @@ function Dashboard() {
     
             const data = await response.json(); 
             console.log("Result:", data);
-            setMessages(prevItems => [...prevItems, data.answer.split("Response: ")])
+            setMessages(prevItems => [...prevItems, data.answer.split("Response: ")[1]])
             setUser(prevItem => [...prevItem, "AI"])
             return data;
         }catch(e) {
