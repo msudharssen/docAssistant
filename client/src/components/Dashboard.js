@@ -5,8 +5,6 @@ import Upload from './Upload'
 import { useState } from 'react'
 const NEXT_PUBLIC_API_URL=process.env.NEXT_PUBLIC_API_URL;
 
-
-
 function Dashboard() {
     const[messages, setMessages] = useState([])
     const[user, setUser] = useState([])
