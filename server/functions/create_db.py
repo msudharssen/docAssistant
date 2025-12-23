@@ -11,12 +11,13 @@ from langchain_experimental.text_splitter import SemanticChunker
 #declare paths to store chroma database and the documents, and original file
 CHROMA_PATH = os.path.join(os.path.dirname(__file__), '../database')
 paths = os.path.join(os.path.dirname(__file__), '../info/data')
+urlPath = os.environ.get('OLLAMA_HOST')
 
 
 
 def main():
     makeDataStore(paths)
-
+xw
 
 def makeDataStore(p):
     documents = loadDoc(p)
@@ -34,7 +35,7 @@ def loadDoc(p):
 
 #generate the data store using semantic chunks
 def split(documents: list[Document]):
-    text_splitter = SemanticChunker(OllamaEmbeddings(model='llama3.1', base_url='http://ai:11434'), breakpoint_threshold_type='percentile')    
+    text_splitter = SemanticChunker(OllamaEmbeddings(model='llama3.1', base_url=urlPath), breakpoint_threshold_type='percentile')    
     doc_chunks = text_splitter.split_documents(documents)
     print(f"Split into {len(doc_chunks)} semantic chunks")
     return doc_chunks
@@ -49,7 +50,7 @@ def chromaSave(chunks: list[Document]):
     
     db = Chroma.from_documents(
         documents=chunks, 
-        embedding=OllamaEmbeddings(model="llama3.1", base_url="http://ai:11434"),
+        embedding=OllamaEmbeddings(model="llama3.1", base_url=urlPath),
         persist_directory=CHROMA_PATH
     )
     db.persist()

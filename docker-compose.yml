@@ -8,6 +8,8 @@ services:
       - server
     networks:
       - my_network
+    environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
   server:
     container_name: backend
     build: ./server
@@ -28,7 +30,8 @@ services:
       - my_network
     volumes:
       - ollama_data:/root/.ollama
-
+    environment:
+      - OLLAMA_HOST=${OLLAMA_HOST}
 
 networks:
   my_network:
@@ -36,6 +39,9 @@ networks:
 
 volumes:
   ollama_data:
+
+environments:
+
 
 
 

@@ -1,7 +1,8 @@
+const NEXT_PUBLIC_API_URL=process.env.NEXT_PUBLIC_API_URL;
 export async function getAnswer(query){
     
     try {
-      const response = await fetch("http://127.0.0.1:5001/answerquerry", {
+      const response = await fetch(`${NEXT_PUBLIC_API_URL}/answerquerry`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ "search": query }),

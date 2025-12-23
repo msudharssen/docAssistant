@@ -5,10 +5,12 @@ from langchain_ollama import OllamaEmbeddings
 from langchain_ollama import OllamaLLM
 import os
 
+urlPath = os.environ.get('OLLAMA_HOST')
 
 
 
-embedding_function = OllamaEmbeddings(model="llama3.1", base_url="http://ai:11434")
+
+embedding_function = OllamaEmbeddings(model="llama3.1", base_url=urlPath)
 CHROMA_PATH =  os.path.join(os.path.dirname(__file__), '../database')
 
 PROMPT_TEMPLATE = """
@@ -27,7 +29,7 @@ def generateAns(text):
 
     print(f"Query: {text}")
 
-    embedding_function = OllamaEmbeddings(model="llama3.1", base_url="http://ai:11434")
+    embedding_function = OllamaEmbeddings(model="llama3.1", base_url=urlPath)
     db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
     print(CHROMA_PATH)
 
@@ -45,7 +47,7 @@ def generateAns(text):
     prompt = prompt_template.format(context=context_text, question=text)
     print(prompt)
 
-    model = OllamaLLM(model="llama3.1", base_url="http://ai:11434")
+    model = OllamaLLM(model="llama3.1", base_url=urlPathxw)
     response_text = model.invoke(prompt)
 
     # create the response
