@@ -1,8 +1,8 @@
-import Dashboard from './Dashboard';
+import Dashboard from '../Dashboard';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react'
 import { useState } from 'react'
-import Upload from './Upload';
+import Upload from '../Upload';
 
 test("Checking Everything renders on Dashboard", () => {
     render(<Dashboard />);
