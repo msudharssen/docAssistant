@@ -9,6 +9,16 @@ jobs:
       steps:
           - name: checkout-code
             uses: actions/checkout@v4
+          - name: test-client-code
+            uses: actions/setup-node@v4
+            with:
+              node-version: 18
+          - name: install dependencies
+            run: npm ci
+            working-directory: ./client
+          - name: run tests
+            run: npm test
+            working-directory: ./client
           - name: docker-login 
             uses: docker/login-action@v3
             with:
